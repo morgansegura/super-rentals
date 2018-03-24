@@ -34,7 +34,16 @@ let rentals = [{
           bedrooms: 3,
           image: 'https://upload.wikimedia.org/wikipedia/commons/f/f7/Wheeldon_Apartment_Building_-_Portland_Oregon.jpg'
         }
-      }]
-    };
+      }];
+
+  this.get('/rentals', function(db, request) {
+    if(request.queryParams.city !== undefined) {
+      let filteredRentals = rentals.filter(function(i) {
+        return i.attributes.city.toLowerCase().indexOf(request.queryParams.city.toLowerCase()) !== -1;
+      });
+      return { data: filteredRentals };
+    } else {
+      return { data: rentals };
+    }
   });
 }
