@@ -33,11 +33,10 @@ module('Integration | Component | list-filter', function(hooks) {
     // filling in the component's input field with 's'
       await fillIn(this.element.querySelector('.list-filter input'),'s');
       // The keyup event here should invoke an action that will cause the list to be filtered
-      await triggerKeyEvent(this.element.querySelector('.list-filter input'), "keyup", 83);    
+      await triggerKeyEvent(this.element.querySelector('.list-filter input'), "keyup", 83);
     return settled().then(() => {
       assert.equal(this.element.querySelectorAll('.city').length, 3);
       assert.equal(this.element.querySelector('.city').textContent.trim(), 'San Francisco');
     });
   });
-});
 });
