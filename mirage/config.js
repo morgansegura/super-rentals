@@ -1,9 +1,7 @@
 export default function() {
   this.namespace = '/api';
 
-  this.get('/rentals', function() {
-    return {
-      data: [{
+let rentals = [{
         type: 'rentals',
         id: 'grand-old-mansion',
         attributes: {
